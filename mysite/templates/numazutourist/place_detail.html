@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>placeの詳細</h1>
+<table class="table">
+    <tr>
+        <th>名称</th>
+        <td>{{ place.name }}</td>
+    </tr>
+    <tr>
+        <th>detail</th>
+        <td>{{ place.explain | linebreaksbr }}</td>
+    </tr>
+    <tr>
+        <th>住所</th>
+        <td><a href="https://www.google.com/maps/search/?api=1&query={{place.name}}">{{ place.adress }}</a></td>
+    </tr>
+</table>
+
+{% endblock %}

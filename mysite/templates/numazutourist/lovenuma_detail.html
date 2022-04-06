@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>reviewの詳細</h1>
+<table class="table">
+    <tr>
+        <th>場所の名前</th>
+        <td><a href="{% url 'numazutourist:place_detail' review.place.pk %}">{{ review.place.name }}</a></td>
+    </tr>
+    <tr>
+        <th>detail</th>
+        <td>{{ review.text | linebreaksbr }}</td>
+    </tr>
+    <tr>
+        <th>name</th>
+        <td>{{ review.name }}</td>
+    </tr>
+</table>
+
+{% endblock %}

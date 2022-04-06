@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>投稿一覧</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>場所</th>
+            <th>投稿日時</th>
+            <th>投稿者</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for review in review_list %}
+        <tr>
+            <td><a href="{% url 'numazutourist:place_detail' review.place.pk %}">{{ review.place.name }}</a></td>
+            <td>{{ review.date|date:"Y-m-d" }}</td>
+            <td><a href="{% url 'numazutourist:review_detail' review.pk %}">{{ review.name }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

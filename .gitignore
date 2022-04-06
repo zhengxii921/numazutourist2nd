@@ -1,0 +1,5 @@
+.*
+!.gitignore
+/media/numazutourist
+!.gitkeep
+local_settings.py

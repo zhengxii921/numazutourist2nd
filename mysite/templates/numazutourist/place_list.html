@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>投稿一覧</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>内容</th>
+            <th>住所</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for place in place_list %}
+        <tr>
+            <td><a href="{% url 'numazutourist:place_detail' place.pk %}">{{ place.name }}</a></td>
+            <td>{{ place.adress }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
