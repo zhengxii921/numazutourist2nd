@@ -6,9 +6,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 # Create your views here.
 
-class IndexView(generic.TemplateView):
+class IndexView(generic.ListView):
     template_name = "numazutourist/index.html"
+    model = Lovenuma.objects.order_by("?")[:18] 
 
+    def get_queryset(self):
+        return Lovenuma.objects.order_by("?")[:18] 
+    
 
 class PlaceListView(generic.ListView):
     model = Place
@@ -37,7 +41,7 @@ class LovenumaListView(generic.ListView):
 class LovenumaCreateView(generic.CreateView):
     model = Lovenuma
     form_class = LovenumaCreateForm
-    success_url = reverse_lazy("numazutourist:lovenuma")
+    success_url = reverse_lazy("numazutourist:lovenumazu")
 
 
 class LovenumaDetailView(generic.DetailView):
@@ -47,10 +51,10 @@ class LovenumaDetailView(generic.DetailView):
 class LovenumaUpdateView(generic.UpdateView):
     model = Lovenuma
     form_class = LovenumaCreateForm
-    success_url = reverse_lazy("numazutourist:lovenuma")
+    success_url = reverse_lazy("numazutourist:lovenumazu")
 
 
 class LovenumaDeleteView(generic.DeleteView):
     model = Lovenuma
-    success_url = reverse_lazy("numazutourist:lovenuma")
+    success_url = reverse_lazy("numazutourist:lovenumazu")
 

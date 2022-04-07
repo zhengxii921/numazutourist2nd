@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from phonenumber_field.modelfields import PhoneNumberField
-
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -50,7 +50,7 @@ class Place(models.Model):
 class Lovenuma(models.Model):
 
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
-    name = models.CharField("名前", max_length=15)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     text = models.TextField("内容")
     date = models.DateTimeField("投稿日時", default=timezone.now)
     eva = models.BooleanField("超良かった")

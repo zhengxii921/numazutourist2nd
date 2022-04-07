@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 html {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
 }
 
 .cards {
@@ -34,6 +34,7 @@ img {
   color: #696969;
   padding: 0.5rem;
   text-transform: lowercase;
+  cursor : pointer;
 }
 
 .btn,
@@ -46,10 +47,11 @@ img {
   transition: all .3s;
 }
 
-.btn:active{
-  box-shadow: none;
-  position: relative;
+.btn:active {
+  background-color: #0e0e0e;
+  color: rgb(179, 179, 179);
   top: 3px;
+  box-shadow: none;
 }
 
 .btn:hover {
@@ -100,9 +102,7 @@ img {
 }
 
 .card__image {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   filter: contrast(70%);
@@ -122,18 +122,7 @@ img {
     padding-top: 66.6%;
   }
 }
-.card__image--flowers {
-  background-image: url(https://unsplash.it/800/600?image=82);
-}
-.card__image--river {
-  background-image: url(https://unsplash.it/800/600?image=11);
-}
-.card__image--record {
-  background-image: url(https://unsplash.it/800/600?image=39);
-}
-.card__image--fence {
-  background-image: url(https://unsplash.it/800/600?image=59);
-}
+
 
 .card__title {
   color: #000;
@@ -152,4 +141,9 @@ img {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+footer{
+  bottom: 0;
+  color: #000000;
 }

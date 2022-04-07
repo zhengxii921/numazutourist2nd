@@ -13,11 +13,11 @@
         </tr>
     </thead>
     <tbody>
-        {% for review in review_list %}
+        {% for lovenuma in lovenuma_list %}
         <tr>
-            <td><a href="{% url 'numazutourist:place_detail' review.place.pk %}">{{ review.place.name }}</a></td>
-            <td>{{ review.date|date:"Y-m-d" }}</td>
-            <td><a href="{% url 'numazutourist:review_detail' review.pk %}">{{ review.name }}</a></td>
+            <td><a href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}">{{ lovenuma.place.name }}</a></td>
+            <td>{{ lovenuma.date|date:"Y-m-d" }}</td>
+            <td><a href="{% url 'numazutourist:lovenuma_detail' lovenuma.pk %}">{{ lovenuma.user.username }}</a></td>
         </tr>
         {% endfor %}
     </tbody>
