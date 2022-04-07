@@ -1,10 +1,15 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ja">
 <head>
     <title>ぬまづつーりすと</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- use Flexbox Card Grid by Craig Anthony.(https://codepen.io/mcraiganthony/pen/NxGxqm)-->
+    <link href="{% static 'numazutourist/css/card.css' %}" type="text/css"  rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
     <link rel=”apple-touch-icon” href=”./apple-touch-icon.png” sizes=”180×180″>
     <link rel=”icon” type=”image/x-icon” href=”./favicon.ico”>
 </head>
@@ -47,6 +52,7 @@
         {% endblock %}
     </div>
 
+    <script type="text/javascript" src="{% static 'numazutourist/js/card.js' %}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 </body>
