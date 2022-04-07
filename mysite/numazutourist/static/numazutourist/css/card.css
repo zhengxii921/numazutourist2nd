@@ -144,6 +144,12 @@ img {
 }
 
 footer{
+  margin-top: 3rem;
   bottom: 0;
   color: #000000;
 }
+
+.lead {
+  margin-top: 3rem;
+}
+
