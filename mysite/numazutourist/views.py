@@ -32,7 +32,7 @@ class PlaceDetailView(generic.DetailView):
     model = Place
 
 
-class PlaceUpdateView(generic.UpdateView):
+class PlaceUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Place
     form_class = PlaceCreateForm
     success_url = reverse_lazy("numazutourist:places")
@@ -66,10 +66,16 @@ class LovenumaDetailView(generic.DetailView):
     model = Lovenuma
 
 
-class LovenumaUpdateView(generic.UpdateView):
+class LovenumaUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Lovenuma
     form_class = LovenumaCreateForm
     success_url = reverse_lazy("numazutourist:lovenumazu")
+
+    def get_queryset(self):
+        base_qs = super(LovenumaUpdateView, self).get_queryset()
+        # さらにユーザIDで絞った結果を返す。(存在しないので404が返る)
+        # 条件分岐してエラーページを出しても可
+        return base_qs.filter(user=self.request.user)
 
 
 class LovenumaDeleteView(generic.DeleteView):
