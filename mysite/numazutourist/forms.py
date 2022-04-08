@@ -1,5 +1,5 @@
 from django import forms
-from .models import Place, Lovenuma
+from .models import *
 
 
 class PlaceCreateForm(forms.ModelForm):
@@ -17,9 +17,24 @@ class PlaceCreateForm(forms.ModelForm):
         fields = "__all__"
 
 
+class PlaceImageForm(forms.ModelForm):
+    class Meta:
+        model = PlaceImages
+        fields = ['image',]
+
+
+PlaceFormset = forms.inlineformset_factory(Place, PlaceImages, PlaceImageForm, extra=0)
+
+
 class LovenumaCreateForm(forms.ModelForm):
     
 
     class Meta:
         model = Lovenuma
-        fields = "__all__"
+        fields = ('place', 'text', 'eva', 'image',)
+
+
+class LovenumaImageForm(forms.ModelForm):
+    class Meta:
+        model = LovenumaImages
+        fields = ['image',]

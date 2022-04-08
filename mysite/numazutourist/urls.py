@@ -15,5 +15,6 @@ urlpatterns = [
     path("lovenuma_detail/<int:pk>/", views.LovenumaDetailView.as_view(), name="lovenuma_detail"),
     path("lovenuma_update/<int:pk>/", views.LovenumaUpdateView.as_view(), name="lovenuma_update"),
     path("lovenuma_delete/<int:pk>/", views.LovenumaDeleteView.as_view(), name="lovenuma_delete"),
+    path("user_detail/<int:pk>/", views.UserDetailView.as_view(), name="user_detail")
 ]
 

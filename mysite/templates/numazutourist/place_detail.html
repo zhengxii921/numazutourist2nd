@@ -2,19 +2,16 @@
 
 {% block content %}
 
-<h1>placeの詳細</h1>
+<h1>{{place.name}}</h1>
 <table class="table">
+    <img src="{{ place.image.url }}">
     <tr>
-        <th>名称</th>
-        <td>{{ place.name }}</td>
-    </tr>
-    <tr>
-        <th>detail</th>
+        <th><i class="fa-solid fa-file-lines"></i> detail</th>
         <td>{{ place.explain | linebreaksbr }}</td>
     </tr>
     <tr>
-        <th>住所</th>
-        <td><a href="https://www.google.com/maps/search/?api=1&query={{place.name}}">{{ place.adress }}</a></td>
+        <th><i class="fa-solid fa-location-dot"></i> 住所</th>
+        <td><a href="https://www.google.com/maps/search/?api=1&query={{place.name}}"><i class="fa-solid fa-map-location"></i> {{ place.adress }}</a></td>
     </tr>
 </table>
 

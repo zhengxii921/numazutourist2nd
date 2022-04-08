@@ -47,6 +47,7 @@ class CustomUserManager(UserManager):
 
 
 class CustomUser(AbstractUser):
+    profile_picture = models.ImageField(upload_to='numazutourist/icon_images', default='numazutourist/orange.jpg')
     objects = CustomUserManager()
 
     def __str__(self):

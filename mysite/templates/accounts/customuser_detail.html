@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="container ml-sm-5 mr-sm-5">
+    <h1>{{ customuser.username }}</h1>
+    <div class="row container">
+        <div class="col-auto">
+        <img src="{{customuser.profile_picture.url}}" class="profile_picture">
+        </div>
+        <div class="col-auto d-flex">
+            <p class="lead bio mb-0">BioBioBioBioBioBioBioBioBioBioBioBio</p>
+        </div>
+    </div>
+</div>
+<ul class="cards">
+    {% for lovenuma in customuser.lovenuma_set.all %}
+    <li class="cards__item">
+        <div class="card">
+            {% if lovenuma.image %}
+            <img class="card__image" src="{{ lovenuma.image.url }}">
+            {% else %}
+            <img class="card__image" src="{% static 'numazutourist/play.jpg' %}">
+            {% endif %}
+            <div class="card__content">
+                <div class="card__title">{{ lovenuma.place.name }}</div>
+                <p class="card__text">{{ lovenuma.text }}</p>
+                <button class="btn btn--block card__btn" onclick="location.href='{% url 'numazutourist:lovenuma_detail' lovenuma.pk %}'">詳細</button>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

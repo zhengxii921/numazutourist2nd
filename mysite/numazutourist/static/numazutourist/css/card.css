@@ -4,17 +4,15 @@
   box-sizing: border-box;
 }
 html {
-  background-color: #ffffff;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", ".HiraKakuInterface-W2" ;
 }
-
 .cards {
-  color: #999999;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #717171;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-wrap: wrap;
@@ -55,9 +53,9 @@ img {
 }
 
 .btn:hover {
-  background-color: #1955a6;
-  color: white;
-  border-color: white;
+  /*background-color: #1955a6;*/
+  background-color: #ebebeb;
+  color: rgb(71, 71, 71);
 }
 .btn--block {
   display: block;
@@ -84,7 +82,7 @@ img {
 .card {
   background-color: white;
   border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 30px -20px rgba(40, 67, 119, 1);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -105,7 +103,7 @@ img {
   object-fit: cover;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  filter: contrast(70%);
+  /*filter: contrast(70%);*/
   overflow: hidden;
   position: relative;
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
@@ -151,5 +149,37 @@ footer{
 
 .lead {
   margin-top: 3rem;
+}
+
+
+.profile_picture{
+  height: 160px;
+  width: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1.5px solid #eee;
+}
+
+.bio{
+  word-wrap:keep-all;
+}
+
+
+a {
+  color:#1955a6;
+}
+
+.navbar {
+  background-color: #ffffffe4;
+  border-radius: 0 0 0.25rem 0.25rem;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+body{
+  padding-top: 8em;
 }
 

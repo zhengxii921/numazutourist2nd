@@ -2,3 +2,5 @@ Django==3.1.0
 django-phonenumber-field[phonenumberslite]
 pillow
 django-allauth
+django-cleanup
+sorl-thumbnail

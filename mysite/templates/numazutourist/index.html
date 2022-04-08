@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<h1 class="display-4">ぬまづつーりすとへようこそ。</h1>
+<h1 class="display-4">沼津みなと新鮮館──Everyone can smile.</h1>
 
 
 
@@ -18,14 +18,17 @@
             <img class="card__image" src="{% static 'numazutourist/play.jpg' %}">
             {% endif %}
             <div class="card__content">
-                <div class="card__title">{{ lovenuma.place.name }}</div>
+                <div class="card__title"><a href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}" class="cardLink">{{ lovenuma.place.name }}</a></div>
                 <p class="card__text">{{ lovenuma.text }}</p>
-                <button class="btn btn--block card__btn" onclick="location.href='{% url 'numazutourist:lovenuma_detail' lovenuma.pk %}'">詳細</button>
+                <button class="btn btn--block card__btn" onclick="location.href='{% url 'numazutourist:lovenuma_detail' lovenuma.pk %}'">More</button>
             </div>
         </div>
     </li>
     {% endfor %}
 </ul>
+
+
+<i class="fa-solid fa-sailboat"></i>
 
 <p class="lead">ここは、沼津の情報を網羅し、その場所についての声を収集し、沼津を訪れる人を支えることを目指す場所です.</p>
 
