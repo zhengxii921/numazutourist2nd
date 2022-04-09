@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from os.path import dirname, abspath
-
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'sorl.thumbnail',
-    'django_cleanup.apps.CleanupConfig'
+    'django_cleanup.apps.CleanupConfig',
+    'cloudinary',
 ]
 
 SITE_ID = 1
@@ -196,3 +197,8 @@ if not DEBUG:
     SECRET_KEY = os.environ['SECRET_KEY']
     import django_heroku
     django_heroku.settings(locals())
+    cloudinary.config(
+        cloud_name='hpp8o57vx',
+        api_key=os.environ['CLOUDINARY_API_KEY'],
+        api_secret=os.environ['CLOUDINARY_API_SECRET']
+    )

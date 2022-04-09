@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 import uuid
 from django.core.files.base import ContentFile
 from sorl.thumbnail import get_thumbnail, delete
-
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -46,7 +46,7 @@ class Place(models.Model):
     opentime = models.TimeField("OPEN", blank=True, null=True)
     closetime = models.TimeField("CLOSE", blank=True, null=True)
     website = models.URLField("URL", blank=True, null=True)
-    image = models.ImageField("画像", blank=True, null=True, upload_to=place_image_directory_path)
+    image = models.CloudinaryField("画像", blank=True, null=True, folder=place_image_directory_path)
 
     def __str__(self):
         return self.name
