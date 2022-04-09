@@ -172,7 +172,6 @@ PROJECT_ROOT = dirname(DJANGO_ROOT)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
     BASE_DIR / "media",
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
