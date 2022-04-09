@@ -86,6 +86,7 @@ class LovenumaDeleteView(generic.DeleteView):
 class UserDetailView(generic.DetailView):
     model = get_user_model()
 
+"""
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponseServerError
 
@@ -95,3 +96,4 @@ def my_customized_server_error(request, template_name='500.html'):
     from django.views import debug
     error_html = debug.technical_500_response(request, *sys.exc_info()).content
     return HttpResponseServerError(error_html)
+"""

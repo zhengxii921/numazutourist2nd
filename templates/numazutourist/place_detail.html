@@ -35,9 +35,9 @@
     </tr>
     <tr>
         <th><i class="fa-solid fa-location-dot"></i> Webサイト</th>
-        <td><a href="{{ place.website }}">{{ place.website }}</a></td>
+        <td><a href="{{ place.website }}" target="_blank" rel="noopener noreferrer">{{ place.website }}</a></td>
     </tr>
 </table>
 
-<a href="{% url 'numazutourist:place_update' place.pk %}">編集する</a>
+<a href="{% url 'numazutourist:place_update' place.pk %}" >編集する</a>
 {% endblock %}
