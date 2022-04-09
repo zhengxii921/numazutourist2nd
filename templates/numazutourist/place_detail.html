@@ -18,7 +18,7 @@
         <td><a href="https://www.google.com/maps/search/?api=1&query={{place.name}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map-location"></i> {{ place.adress }}</a></td>
     </tr>
     <tr>
-        <th><i class="fa-solid fa-location-dot"></i> 種類</th>
+        <th><i class="fa-solid fa-filter"></i> 種類</th>
         <td>{{ place.sort }}</td>
     </tr>
     <tr>
@@ -35,7 +35,7 @@
     </tr>
     <tr>
         <th><i class="fa-brands fa-internet-explorer"></i> Webサイト</th>
-        {% if place.website is None %}
+        {% if place.website is not None %}
             <td><a href="{{ place.website }}" target="_blank" rel="noopener noreferrer">{{ place.website }}</a></td>
         {% else %}
             <td><a tabindex="-1">{{ place.website }}</a></td>
