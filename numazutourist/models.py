@@ -54,7 +54,8 @@ class Place(models.Model):
 
 class PlaceImages(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name="place_images")
-    image = models.ImageField(upload_to=place_image_directory_path)
+    image = CloudinaryField("画像", blank=True, null=True, folder=place_image_directory_path)
+
 
 
 def lovenuma_image_directory_path(instance, filename):
@@ -67,8 +68,8 @@ class Lovenuma(models.Model):
     text = models.TextField("内容")
     date = models.DateTimeField("投稿日時", default=timezone.now)
     eva = models.BooleanField("超良かった")
-    image = models.ImageField("画像", upload_to=lovenuma_image_directory_path, blank=True, null=True)
-    
+    image = CloudinaryField("画像", blank=True, null=True, folder=lovenuma_image_directory_path)
+
 
     def __str__(self):
         return self.text
@@ -82,4 +83,4 @@ class Like(models.Model):
 
 class LovenumaImages(models.Model):
     lovenuma = models.ForeignKey(Lovenuma, on_delete=models.CASCADE, related_name="lovenuma_images")
-    image = models.ImageField(upload_to=lovenuma_image_directory_path)
+    image = CloudinaryField("画像", blank=True, null=True, folder=lovenuma_image_directory_path)
