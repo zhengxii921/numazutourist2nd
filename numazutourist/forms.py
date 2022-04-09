@@ -11,9 +11,8 @@ class PlaceCreateForm(forms.ModelForm):
         label="閉店時刻",
         widget=forms.DateInput(attrs={"type":"time"})
     )
-    image = CloudinaryFileField(
-            options={'folder': 'media/Model_image', 'tags': 'Model_name'})
-            
+    image = CloudinaryFileField()
+
     class Meta:
         model = Place
         fields = "__all__"
@@ -23,13 +22,13 @@ class PlaceImageForm(forms.ModelForm):
     class Meta:
         model = PlaceImages
         fields = ['image',]
-
+    image = CloudinaryFileField()
 
 PlaceFormset = forms.inlineformset_factory(Place, PlaceImages, PlaceImageForm, extra=0)
 
 
 class LovenumaCreateForm(forms.ModelForm):
-    
+    image = CloudinaryFileField()
 
     class Meta:
         model = Lovenuma
@@ -37,6 +36,7 @@ class LovenumaCreateForm(forms.ModelForm):
 
 
 class LovenumaImageForm(forms.ModelForm):
+    image = CloudinaryFileField()
     class Meta:
         model = LovenumaImages
         fields = ['image',]
