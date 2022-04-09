@@ -22,20 +22,24 @@
         <td>{{ place.sort }}</td>
     </tr>
     <tr>
-        <th><i class="fa-solid fa-location-dot"></i> 祝日</th>
+        <th><i class="fa-solid fa-calendar-week"></i> 祝日</th>
         <td>{{ place.holidays.number }}</td>
     </tr>
     <tr>
-        <th><i class="fa-solid fa-location-dot"></i> 電話番号</th>
+        <th><i class="fa-solid fa-phone"></i> 電話番号</th>
         <td>{{ place.phonenumber }}</td>
     </tr>
     <tr>
-        <th><i class="fa-solid fa-location-dot"></i> 営業時間</th>
+        <th><i class="fa-solid fa-clock"></i> 営業時間</th>
         <td>{{ place.opentime }} ~ {{ place.closetime }}</td>
     </tr>
     <tr>
-        <th><i class="fa-solid fa-location-dot"></i> Webサイト</th>
-        <td><a href="{{ place.website }}" target="_blank" rel="noopener noreferrer">{{ place.website }}</a></td>
+        <th><i class="fa-brands fa-internet-explorer"></i> Webサイト</th>
+        {% if place.website is None %}
+            <td><a href="{{ place.website }}" target="_blank" rel="noopener noreferrer">{{ place.website }}</a></td>
+        {% else %}
+            <td><a tabindex="-1">{{ place.website }}</a></td>
+        {% endif %}
     </tr>
 </table>
 

@@ -2,12 +2,17 @@
 
 {% block content %}
 
-<h1>reviewの詳細</h1>
+
 <table class="table">
     <tr>
         <th>場所の名前</th>
         <td><a href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}">{{ lovenuma.place.name }}</a></td>
     </tr>
+    <div class="topimage">
+        {% if lovenuma.image %}
+            <img src="{{ lovenuma.image.url }}">
+        {% endif %}
+    </div>
     <tr>
         <th>detail</th>
         <td>{{ lovenuma.text | linebreaksbr }}</td>
@@ -18,4 +23,5 @@
     </tr>
 </table>
 
+<p>Like数 : {{ lovenuma.like_set.all().count() }}</p>
 {% endblock %}

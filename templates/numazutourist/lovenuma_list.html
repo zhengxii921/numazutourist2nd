@@ -9,25 +9,6 @@
     <button type="submit" class="btn btn-outline-primary"><i class="fas fa-search"></i>検索</button>
 </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>場所</th>
-            <th>投稿日時</th>
-            <th>投稿者</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for lovenuma in lovenuma_list %}
-        <tr>
-            <td><a href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}">{{ lovenuma.place.name }}</a></td>
-            <td>{{ lovenuma.date|date:"Y-m-d" }}</td>
-            <td><a href="{% url 'numazutourist:lovenuma_detail' lovenuma.pk %}">{{ lovenuma.user.username }}</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
 <ul class="cards">
     {% for lovenuma in lovenuma_list %}
     <li class="cards__item">
@@ -51,7 +32,7 @@
     <ul class="pagination">
         {% if page_obj.previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                <a class="page-link" href="?page=1" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                 </a>
@@ -64,16 +45,41 @@
                 </a>
             </li>
         {% endif %}
-        <li class="page-item"><a class="page-link" href="#!">1</a></li>
-        <li class="page-item page-item active"><a class="page-link" href="#!">2</a></li>
-        <li class="page-item"><a class="page-link" href="#!">3</a></li>
+
+        {% if page_obj.previous %}
+            <li class="page-item"><a class="page-link">{{ page_obj.previous_page_number }}</a></li>
+        {% else %}
+            <li class="page-item"><a class="page-link active" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+        {% endif %}
+
+        {% if page_obj.previous and page_obj.next %}
+            <li class="page-item page-item active"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+        {% elif page_obj.previous %}
+            <li class="page-item page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+        {% elif page_obj.next %}
+            <li class="page-item page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+        {% endif %}
+
         {% if page_obj.next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-            </a>
-        </li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+        {% else %}
+            <li class="page-item"><a class="page-link active" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+        {% endif %}
+
+        {% if page_obj.next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link disabled" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
         {% endif %}
     </ul>
 </nav>
