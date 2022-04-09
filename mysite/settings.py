@@ -171,9 +171,7 @@ USE_TZ = True
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
 PROJECT_ROOT = dirname(DJANGO_ROOT)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+
 
 STATIC_URL = '/static/'
 
