@@ -46,7 +46,7 @@ class Place(models.Model):
     opentime = models.TimeField("OPEN", blank=True, null=True)
     closetime = models.TimeField("CLOSE", blank=True, null=True)
     website = models.URLField("URL", blank=True, null=True)
-    image = models.CloudinaryField("画像", blank=True, null=True, folder=place_image_directory_path)
+    image = CloudinaryField("画像", blank=True, null=True, folder=place_image_directory_path)
 
     def __str__(self):
         return self.name
