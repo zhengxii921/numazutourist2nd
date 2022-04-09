@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-
+from cloudinary.forms import CloudinaryFileField
 
 class PlaceCreateForm(forms.ModelForm):
     opentime = forms.TimeField(
@@ -11,7 +11,9 @@ class PlaceCreateForm(forms.ModelForm):
         label="閉店時刻",
         widget=forms.DateInput(attrs={"type":"time"})
     )
-
+    image = CloudinaryFileField(
+            options={'folder': 'media/Model_image', 'tags': 'Model_name'})
+            
     class Meta:
         model = Place
         fields = "__all__"
