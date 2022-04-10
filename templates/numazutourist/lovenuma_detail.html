@@ -21,9 +21,16 @@
         <th>name</th>
         <td>{{ lovenuma.user.username }}</td>
     </tr>
+    <tr>
+        <th>Like数</th>
+        <td>{{ lovenuma.like_set.all.count }}</td>
+    </tr>
 </table>
 
-<p>Like数 :
-{{ lovenuma.like_set.all.count }}</p>
+
+<form action="{% url 'numazutourist:lovenuma_like' lovenuma.pk %}" method="post">
+    <button class="btn" type="submit" name="button">お気に入り追加</button>
+    {% csrf_token %}
+</form>
 
 {% endblock %}

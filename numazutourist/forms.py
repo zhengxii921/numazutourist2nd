@@ -29,7 +29,6 @@ PlaceFormset = forms.inlineformset_factory(Place, PlaceImages, PlaceImageForm, e
 
 class LovenumaCreateForm(forms.ModelForm):
     image = CloudinaryFileField()
-
     class Meta:
         model = Lovenuma
         fields = ('place', 'text', 'eva', 'image',)
@@ -40,3 +39,10 @@ class LovenumaImageForm(forms.ModelForm):
     class Meta:
         model = LovenumaImages
         fields = ['image',]
+
+
+class LikeCreateForm(forms.ModelForm):
+
+    class Meta:
+        model = Like
+        fields = []

@@ -8,6 +8,7 @@ from django.db.models import Q
 import sys
 sys.path.append('../')
 from accounts.models import CustomUser
+from django.shortcuts import redirect, get_object_or_404
 # Create your views here.
 
 class IndexView(generic.ListView):
@@ -96,3 +97,9 @@ def my_customized_server_error(request, template_name='500.html'):
     from django.views import debug
     error_html = debug.technical_500_response(request, *sys.exc_info()).content
     return HttpResponseServerError(error_html)
+
+
+def like(request, pk):
+    lovenuma = get_object_or_404(Lovenuma, pk=pk)
+    Like.objects.create(lovenuma=lovenuma, user=request.user)
+    return redirect("numazutourist:lovenumazu")
