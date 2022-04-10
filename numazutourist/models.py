@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.core.validators import MaxValueValidator, MinValueValidator
-from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.contrib.auth import get_user_model
 import uuid
 from django.core.files.base import ContentFile
@@ -41,7 +40,8 @@ class Place(models.Model):
     adress = models.CharField("住所",max_length=100, blank=True, null=True)
     explain = models.CharField("施設詳細", max_length=140, blank=True, null=True)
     sort = models.IntegerField("種類",choices=SORT_CHOICES)
-    phonenumber = PhoneNumberField("電話番号", unique=True, blank=True, null=True)
+    tel_number_regex = RegexValidator(regex=r'^[0-9]+$', message = ("Tel Number must be entered in the format: '09012345678'. Up to 15 digits allowed."))
+    phonenumber = models.CharField(validators=[tel_number_regex], max_length=15, verbose_name='電話番号', unique=True, blank=True, null=True)
     holidays = models.ManyToManyField(Weekday, verbose_name="定休日", blank=True)
     opentime = models.TimeField("OPEN", blank=True, null=True)
     closetime = models.TimeField("CLOSE", blank=True, null=True)
