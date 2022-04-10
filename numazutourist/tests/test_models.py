@@ -6,12 +6,13 @@ from numazutourist.models import *
 class PlaceModelTests(TestCase):
 
 
+    # 空の状態にカウントして0かどうか
     def test_is_empty(self):
         saved_places = Place.objects.all()
-
         self.assertEqual(saved_places.count(),0)
 
 
+    # 1つ足して要素が1つ増えるかどうか
     def test_is_count_one(self):
         place = Place(
             name="name",
@@ -23,10 +24,10 @@ class PlaceModelTests(TestCase):
         )
         place.save()
         saved_places = Place.objects.all()
-
         self.assertEqual(saved_places.count(),1)
 
 
+    # 保存して取り出して元の名前と一致するかどうか
     def test_savind_and_retrieving_place(self):
         place = Place()
         name = "name"
@@ -55,3 +56,10 @@ class PlaceModelTests(TestCase):
         )
 
         self.assertEqual(place.closetime, time)
+
+
+class LovenumaModelTests(TestCase):
+
+
+    def test_is_empty(self):
+        saved_lovenuma = Lovenuma.objects.all()
