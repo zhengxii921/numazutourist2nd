@@ -63,3 +63,4 @@ class LovenumaModelTests(TestCase):
 
     def test_is_empty(self):
         saved_lovenuma = Lovenuma.objects.all()
+        self.assertEqual(saved_lovenuma.count(), 0)
