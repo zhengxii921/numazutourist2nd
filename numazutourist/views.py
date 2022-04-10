@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from .models import *
-from .forms import PlaceCreateForm, LovenumaCreateForm
+from .forms import PlaceCreateForm, LovenumaCreateForm, UserCreateForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
