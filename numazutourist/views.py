@@ -100,6 +100,12 @@ class UserUpdateView(generic.UpdateView):
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponseServerError
 
+
+@requires_csrf_token
+def my_customized_server_error(request, template_name='500.html'):
+    from django.views.defaults import server_error
+    return server_error(request, template_name)
+
 """
 @requires_csrf_token
 def my_customized_server_error(request, template_name='500.html'):
