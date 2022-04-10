@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import UserManager, AbstractUser
 
+import uuid
+from django.core.files.base import ContentFile
+from sorl.thumbnail import get_thumbnail, delete
+from cloudinary.models import CloudinaryField
+
 # Create your models here.
 
 class CustomUserManager(UserManager):
