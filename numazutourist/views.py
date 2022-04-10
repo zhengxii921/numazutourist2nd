@@ -87,6 +87,15 @@ class LovenumaDeleteView(generic.DeleteView):
 class UserDetailView(generic.DetailView):
     model = get_user_model()
 
+class UserUpdateView(generic.UpdateView):
+    model = get_user_model()
+    form_class = UserCreateForm
+    success_url = reverse_lazy("numazutourist:lovenumazu")
+
+    def form_valid(self, form):
+            form.instance.user = self.request.user
+            return super().form_valid(form)
+
 
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponseServerError

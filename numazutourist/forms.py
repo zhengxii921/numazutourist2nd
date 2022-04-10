@@ -46,3 +46,10 @@ class LikeCreateForm(forms.ModelForm):
     class Meta:
         model = Like
         fields = []
+
+
+class UserCreateForm(forms.ModelForm):
+    profile_picture = CloudinaryFileField()
+    class Meta:
+        model = Lovenuma
+        fields = ('profile_picture',)
