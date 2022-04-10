@@ -19,9 +19,9 @@ from . import settings
 from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 urlpatterns = [
-    path("numazutourist/", include("numazutourist.urls")),
+    path("", include("numazutourist.urls")),
     path('admin/', admin.site.urls),
-    path('numazutourist/account/', include('allauth.urls')),
+    path('account/', include('allauth.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
