@@ -110,5 +110,8 @@ def my_customized_server_error(request, template_name='500.html'):
 
 def like(request, pk):
     lovenuma = get_object_or_404(Lovenuma, pk=pk)
-    Like.objects.create(lovenuma=lovenuma, user=request.user)
-    return redirect("numazutourist:lovenumazu")
+    if Like.objects.filter(lovenuma=lovenuma, user=request.user).count() > 0:
+        return redirect("numazutourist:lovenumazu")
+    else:
+        Like.objects.create(lovenuma=lovenuma, user=request.user)
+        return redirect("numazutourist:lovenumazu")
