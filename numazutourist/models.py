@@ -36,7 +36,7 @@ class Place(models.Model):
         (6, "その他"),
     )
 
-    name = models.CharField("名称",max_length=30)
+    name = models.CharField("名称",max_length=50)
     adress = models.CharField("住所",max_length=100, blank=True, null=True)
     explain = models.CharField("施設詳細", max_length=140, blank=True, null=True)
     sort = models.IntegerField("種類",choices=SORT_CHOICES)
