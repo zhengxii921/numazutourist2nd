@@ -16,7 +16,7 @@
             {% if lovenuma.image %}
             <img class="card__image" src="{{ lovenuma.image.url }}">
             {% else %}
-            <img class="card__image" src="{% static 'numazutourist/play.jpg' %}">
+            <img class="card__image" src="{% static 'numazutourist/default.jpg' %}">
             {% endif %}
             <div class="card__content">
                 <div class="card__title"><a href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}">{{ lovenuma.place.name }}</a></div>

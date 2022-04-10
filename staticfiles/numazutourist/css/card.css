@@ -46,16 +46,15 @@ img {
 }
 
 .btn:active {
-  background-color: #0e0e0e;
+  background-color: #1f0d85;
   color: rgb(179, 179, 179);
   top: 3px;
   box-shadow: none;
 }
 
 .btn:hover {
-  /*background-color: #1955a6;*/
-  background-color: #ebebeb;
-  color: rgb(71, 71, 71);
+  background-color: #1955a6;
+  color: rgb(255, 255, 255);
 }
 .btn--block {
   display: block;
