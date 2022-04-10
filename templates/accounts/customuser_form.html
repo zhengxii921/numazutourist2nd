@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="lead">Userを追加する</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    <table class="table">
+        {{ form.as_table }}
+    </table>
+    <button type="submit" class="btn btn-primary">送信</button>
+    {% csrf_token %}
+</form>
+
+{% endblock %}
