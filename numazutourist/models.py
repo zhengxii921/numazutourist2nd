@@ -40,6 +40,7 @@ class Place(models.Model):
     adress = models.CharField("住所",max_length=100, blank=True, null=True)
     explain = models.CharField("施設詳細", max_length=140, blank=True, null=True)
     sort = models.IntegerField("種類",choices=SORT_CHOICES)
+    is_sacred = models.BooleanField(verbose_name="ラブライブ!聖地", default=False)
     tel_number_regex = RegexValidator(regex=r'^[0-9]+$', message = ("Tel Number must be entered in the format: '09012345678'. Up to 15 digits allowed."))
     phonenumber = models.CharField(validators=[tel_number_regex], max_length=15, verbose_name='電話番号', unique=True, blank=True, null=True)
     holidays = models.ManyToManyField(Weekday, verbose_name="定休日", blank=True)
