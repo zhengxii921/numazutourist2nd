@@ -22,6 +22,10 @@
         <td>{{ place.get_sort_display }}</td>
     </tr>
     <tr>
+        <th><i class="fa-solid fa-church"></i> 聖地</th>
+        <td>{{ place.is_sacred }}</td>
+    </tr>
+    <tr>
         <th><i class="fa-solid fa-calendar-week"></i> 祝日</th>
         <td>{{ place.holidays.number }}</td>
     </tr>
