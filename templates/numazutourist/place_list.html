@@ -2,13 +2,14 @@
 
 {% block content %}
 
-<h1>投稿一覧</h1>
+<h1>施設一覧</h1>
 
 <h4 class="lead"><a href="{% url 'numazutourist:add_place' %}">投稿を追加する</a></h4>
 <table class="table">
     <thead>
         <tr>
             <th>内容</th>
+            <th>種類</th>
             <th>住所</th>
         </tr>
     </thead>
@@ -16,6 +17,7 @@
         {% for place in place_list %}
         <tr>
             <td><a href="{% url 'numazutourist:place_detail' place.pk %}">{{ place.name }}</a></td>
+            <td>{{ place.get_sort_display }}</td>
             <td>{{ place.adress }}</td>
         </tr>
         {% endfor %}

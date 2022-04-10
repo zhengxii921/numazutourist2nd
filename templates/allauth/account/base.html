@@ -6,16 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
-    <!-- use Flexbox Card Grid by Craig Anthony.(https://codepen.io/mcraiganthony/pen/NxGxqm)-->
     <link href="{% static 'numazutourist/css/card.css' %}" type="text/css"  rel="stylesheet">
+    <link rel="apple-touch-icon" type="image/png" href="{% static 'numazutourist/icon/apple-touch-icon.png' %}" sizes="180×180">
+    <link rel="icon" type="image/x-icon" href="{% static 'numazutourist/icon/favicon.ico' %}">
+
+        <!-- use Flexbox Card Grid by Craig Anthony. detail -> https://codepen.io/mcraiganthony/pen/NxGxqm -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://kit.fontawesome.com/954c55ccd1.js" crossorigin="anonymous"></script>
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <link rel="apple-touch-icon" type="image/png" href="{% static 'numazutourist/icon/apple-touch-icon.png' %}" sizes="180×180">
-    <link rel="icon" type="image/x-icon" href="{% static 'numazutourist/icon/favicon.ico' %}">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
 </head>
 
 <body>
@@ -43,47 +43,30 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text"  aria-label="Search">
+                    <input class="form-control mr-sm-2" type="text" placeholder="※作成中です" aria-label="Search">
                     <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>検索</button>
                 </form>
             </div>
         </nav>
-    {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul class="table">
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-
-    <div>
-      <strong>Menu:</strong>
-      <ul>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">メールアドレスを変更する</a></li>
-        <li><a href="{% url 'account_logout' %}">ログアウト</a></li>
+        {% load account %}
+        {% user_display user as user_display %}
+        {% if user_display %}
+            <a href="{% url 'account_logout' %}">{{ user_display }}</a> <!-- 追加 -->
         {% else %}
-        <li><a href="{% url 'account_login' %}">ログイン</a></li>
-        <li><a href="{% url 'account_signup' %}">ユーザー登録</a></li>
+            <a href="{% url 'account_login' %}">ログイン</a> <!-- 追加 -->
         {% endif %}
-      </ul>
-    </div>
-    {% block content %}
-    {% endblock %}
-    {% endblock %}
-    {% block extra_body %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-    <footer>
-      <p class="text-center">Copyright © Paradise NUMAZU Inc.</p>
-  </footer>
-</div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <footer>
+            <p class="text-center">Copyright © Paradise NUMAZU Inc.</p>
+        </footer>
+
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
