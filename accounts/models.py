@@ -45,9 +45,11 @@ class CustomUserManager(UserManager):
 
         return self._create_user(email, username, password, **extra_fields)
 
+def icon_image_directory_path(instance, filename):
+    return 'numazutourist/icon_images/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 class CustomUser(AbstractUser):
-    profile_picture = models.ImageField(upload_to='numazutourist/icon_images', default='numazutourist/orange.jpg')
+    profile_picture = CloudinaryField("画像", folder=icon_image_directory_path, default="numazutourist/icon_default.png")
     objects = CustomUserManager()
 
     def __str__(self):
