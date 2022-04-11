@@ -58,7 +58,6 @@ class PlaceImages(models.Model):
     image = CloudinaryField("画像", blank=True, null=True, folder=place_image_directory_path)
 
 
-
 def lovenuma_image_directory_path(instance, filename):
     return 'numazutourist/place_images/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 

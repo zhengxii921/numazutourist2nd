@@ -24,8 +24,6 @@ class PlaceImageForm(forms.ModelForm):
         fields = ['image',]
     image = CloudinaryFileField(required=False)
 
-PlaceFormset = forms.inlineformset_factory(Place, PlaceImages, PlaceImageForm, extra=0)
-
 
 class LovenumaCreateForm(forms.ModelForm):
     image = CloudinaryFileField()

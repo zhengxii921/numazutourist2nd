@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 import sys
-sys.path.append('../')
+sys.path.append('../') #ルートディレクトリから遡るためのpass
 from accounts.models import CustomUser
 from django.shortcuts import redirect, get_object_or_404
 # Create your views here.
@@ -107,7 +107,7 @@ def my_customized_server_error(request, template_name='500.html'):
     return server_error(request, template_name )
 
 
-"""
+""" DEBUG=Falseでエラーを確認するための関数, 使う場合は上をコメントアウト
 @requires_csrf_token
 def my_customized_server_error(request, template_name='500.html'):
     import sys
