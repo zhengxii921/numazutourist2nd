@@ -55,22 +55,13 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    },
-    'axes_cache': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
-}
-
-AXES_CACHE = 'axes_cache'
-
 AUTHENTICATION_BACKENDS = (
     'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend', #デフォルトの認証基盤
     'allauth.account.auth_backends.AuthenticationBackend' # メールアドレスとパスワードの両方を用いて認証するために必要
 )
+
+AXES_USERNAME_FORM_FIELD = 'login'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
@@ -87,9 +78,9 @@ EMAIL_PORT = 587
 # hostuserとpasswordはlocalsettingで読み込み済み
 
 
-LOGIN_URL = '/numazutourist/account/login/' # ログインURLの設定
-LOGIN_REDIRECT_URL = '/numazutourist/' # ログイン後のリダイレクト先
-ACCOUNT_LOGOUT_REDIRECT_URL = '/numazutourist/account/login/' # ログアウト後のリダイレクト先
+LOGIN_URL = 'account/login/' # ログインURLの設定
+#LOGIN_REDIRECT_URL = 'account/login/' # ログイン後のリダイレクト先
+#ACCOUNT_LOGOUT_REDIRECT_URL = 'account/login/' # ログアウト後のリダイレクト先
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 

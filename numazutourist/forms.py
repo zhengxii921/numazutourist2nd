@@ -51,3 +51,4 @@ class UserCreateForm(forms.ModelForm):
     class Meta:
         model = Lovenuma
         fields = ('profile_picture',)
+

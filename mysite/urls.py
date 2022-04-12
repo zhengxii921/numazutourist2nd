@@ -18,9 +18,23 @@ from django.urls import path, include
 from . import settings
 from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
+from django.utils.decorators import method_decorator
+
+from allauth.account.views import LoginView
+from django.views.generic import TemplateView
+
+from axes.decorators import axes_dispatch
+from axes.decorators import axes_form_invalid
+
+from mysite.forms import AxesLoginForm
+
+LoginView.dispatch = method_decorator(axes_dispatch)(LoginView.dispatch)
+LoginView.form_invalid = method_decorator(axes_form_invalid)(LoginView.form_invalid)
+
 urlpatterns = [
     path("", include("numazutourist.urls")),
     path('admin/', admin.site.urls),
+    path('account/login/', LoginView.as_view(form_class=AxesLoginForm), name='account_login'),
     path('account/', include('allauth.urls')),
 ]
 
