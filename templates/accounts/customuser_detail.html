@@ -31,18 +31,18 @@
 <!-- タブで切り替えたいね -->
 <h3>LikeしたLovenumaのリスト</h3>
 <ul class="cards">
-    {% for lovenuma in user.like_set.all.lovenuma %}
+    {% for like in user.like_set.all %}
     <li class="cards__item">
         <div class="card">
-            {% if lovenuma.image %}
-            <img class="card__image" src="{{ lovenuma.image.url }}">
+            {% if like.lovenuma.image %}
+            <img class="card__image" src="{{ like.lovenuma.image.url }}">
             {% else %}
             <img class="card__image" src="{% static 'numazutourist/default.jpg' %}">
             {% endif %}
             <div class="card__content">
-                <div class="card__title"><a href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}">{{ lovenuma.place.name }}</a></div>
-                <p class="card__text">{{ lovenuma.text }}</p>
-                <button class="btn btn--block card__btn" onclick="location.href='{% url 'numazutourist:lovenuma_detail' lovenuma.pk %}'">詳細</button>
+                <div class="card__title"><a href="{% url 'numazutourist:place_detail' like.lovenuma.place.pk %}">{{ like.lovenuma.place.name }}</a></div>
+                <p class="card__text">{{ like.lovenuma.text }}</p>
+                <button class="btn btn--block card__btn" onclick="location.href='{% url 'numazutourist:lovenuma_detail' like.lovenuma.pk %}'">詳細</button>
             </div>
         </div>
     </li>

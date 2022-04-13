@@ -15,11 +15,9 @@
       {% endif %}
       <div class="card__content">
         <div class="card__title">
-          <a
-            href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}"
-            class="cardLink"
-            >{{ lovenuma.place.name }}</a
-          >
+          <a href="{% url 'numazutourist:place_detail' lovenuma.place.pk %}" class="cardLink">
+            {{ lovenuma.place.name }}
+          </a>
         </div>
         <p class="card__text">{{ lovenuma.text }}</p>
         <button
@@ -43,23 +41,12 @@
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
-      <button
-        class="accordion-button"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseOne"
-        aria-expanded="true"
-        aria-controls="collapseOne"
-      >
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+        aria-expanded="false" aria-controls="collapseOne">
         Update History
       </button>
     </h2>
-    <div
-      id="collapseOne"
-      class="accordion-collapse collapse show"
-      aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample"
-    >
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <p>　ver1.3 施設情報追加機能を実装、画面の微修正</p>
         <p>　ver1.2 簡易的なLike機能を追加</p>
@@ -70,64 +57,4 @@
   </div>
 </div>
 
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button
-        class="accordion-button"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseOne"
-        aria-expanded="true"
-        aria-controls="collapseOne"
-      >
-        Update History
-      </button>
-    </h2>
-    <div
-      id="collapseOne"
-      class="accordion-collapse collapse show"
-      aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample"
-    >
-      <div class="accordion-body">
-        <p>　ver1.3 施設情報追加機能を実装、画面の微修正</p>
-        <p>　ver1.2 簡易的なLike機能を追加</p>
-        <p>　ver1.1 ユーザー情報追加(動作未確認)</p>
-        <p>　ver1.0 サイト公開</p>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button
-        class="accordion-button collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseTwo"
-        aria-expanded="false"
-        aria-controls="collapseTwo"
-      >
-        Accordion Item #2
-      </button>
-    </h2>
-    <div
-      id="collapseTwo"
-      class="accordion-collapse collapse"
-      aria-labelledby="headingTwo"
-      data-bs-parent="#accordionExample"
-    >
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden
-        by default, until the collapse plugin adds the appropriate classes that
-        we use to style each element. These classes control the overall
-        appearance, as well as the showing and hiding via CSS transitions. You
-        can modify any of this with custom CSS or overriding our default
-        variables. It's also worth noting that just about any HTML can go within
-        the <code>.accordion-body</code>, though the transition does limit
-        overflow.
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}

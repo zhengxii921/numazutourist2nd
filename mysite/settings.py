@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'numazutourist.apps.NumazutouristConfig',
     'phonenumber_field',
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -62,6 +62,10 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AXES_USERNAME_FORM_FIELD = 'login'
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = 1
+AXES_LOCKOUT_TEMPLATE = 'lockout.html'
+AXES_RESET_ON_SUCCESS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
@@ -78,9 +82,9 @@ EMAIL_PORT = 587
 # hostuserとpasswordはlocalsettingで読み込み済み
 
 
-LOGIN_URL = 'account/login/' # ログインURLの設定
-#LOGIN_REDIRECT_URL = 'account/login/' # ログイン後のリダイレクト先
-#ACCOUNT_LOGOUT_REDIRECT_URL = 'account/login/' # ログアウト後のリダイレクト先
+LOGIN_REDIRECT_URL = 'numazutourist:index' # ログイン後のリダイレクト先
+ACCOUNT_LOGOUT_REDIRECT_URL = 'numazutourist:index' # ログアウト後のリダイレクト先
+ACCOUNT_LOGOUT_ON_GET = True
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -175,8 +179,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-DJANGO_ROOT = dirname(dirname(abspath(__file__)))
-PROJECT_ROOT = dirname(DJANGO_ROOT)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -207,5 +209,5 @@ if not DEBUG:
     cloudinary.config(
         cloud_name='hpp8o57vx',
         api_key=os.environ['CLOUDINARY_API_KEY'],
-        api_secret=os.environ['CLOUDINARY_API_SECRET']
+        api_secret=os.environ['CLOUDINARY_API_SECRET'],
     )

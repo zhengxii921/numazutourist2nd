@@ -70,7 +70,7 @@ class LovenumaDetailView(generic.DetailView):
 class LovenumaUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Lovenuma
     form_class = LovenumaCreateForm
-    success_url = reverse_lazy("numazutourist:lovenumazu")
+    success_url = reverse_lazy("numazutourist:lovenuma_detail")
 
     def get_queryset(self):
         base_qs = super(LovenumaUpdateView, self).get_queryset()
@@ -87,14 +87,16 @@ class LovenumaDeleteView(generic.DeleteView):
 class UserDetailView(generic.DetailView):
     model = get_user_model()
 
-class UserUpdateView(generic.UpdateView):
+class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = get_user_model()
     form_class = UserCreateForm
-    success_url = reverse_lazy("numazutourist:lovenumazu")
+    success_url = reverse_lazy("numazutourist:user_detail")
 
-    def form_valid(self, form):
-            form.instance.user = self.request.user
-            return super().form_valid(form)
+    def get_queryset(self):
+        base_qs = super(UserUpdateView, self).get_queryset()
+        # さらにユーザIDで絞った結果を返す。(存在しないので404が返る)
+        # 条件分岐してエラーページを出しても可
+        return base_qs.filter(username=self.request.user.username)
 
 
 from django.views.decorators.csrf import requires_csrf_token

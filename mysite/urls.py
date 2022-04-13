@@ -34,8 +34,8 @@ LoginView.form_invalid = method_decorator(axes_form_invalid)(LoginView.form_inva
 urlpatterns = [
     path("", include("numazutourist.urls")),
     path('admin/', admin.site.urls),
-    path('account/login/', LoginView.as_view(form_class=AxesLoginForm), name='account_login'),
-    path('account/', include('allauth.urls')),
+    path('accounts/login/', LoginView.as_view(form_class=AxesLoginForm), name='account_login'),
+    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
