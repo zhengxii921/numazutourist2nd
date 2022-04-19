@@ -2,15 +2,15 @@
 {% load static %}
 {% block content %}
 
-<h1>{{ user.username }}</h1>
+<h1>{{ customuser.username }}</h1>
 <div class="profile">
-    <img src="{{ user.profile_picture.url }}" class="profile_picture">
-    <h2>{{ user.username }}</h2>
+    <img src="{{ customuser.profile_picture.url }}" class="profile_picture">
+    <h2>{{ customuser.username }}</h2>
 </div>
 
 <h3>投稿したLovenumaのリスト</h3>
 <ul class="cards">
-    {% for lovenuma in user.lovenuma_set.all %}
+    {% for lovenuma in customuser.lovenuma_set.all %}
     <li class="cards__item">
         <div class="card">
             {% if lovenuma.image %}
@@ -31,7 +31,7 @@
 <!-- タブで切り替えたいね -->
 <h3>LikeしたLovenumaのリスト</h3>
 <ul class="cards">
-    {% for like in user.like_set.all %}
+    {% for like in customuser.like_set.all %}
     <li class="cards__item">
         <div class="card">
             {% if like.lovenuma.image %}

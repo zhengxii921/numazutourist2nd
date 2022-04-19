@@ -84,16 +84,16 @@ class LovenumaDeleteView(generic.DeleteView):
     success_url = reverse_lazy("numazutourist:lovenumazu")
 
 
-class UserDetailView(generic.DetailView):
+class CustomuserDetailView(generic.DetailView):
     model = get_user_model()
 
-class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
+class CustomuserUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = get_user_model()
     form_class = UserCreateForm
     success_url = reverse_lazy("numazutourist:user_detail")
 
     def get_queryset(self):
-        base_qs = super(UserUpdateView, self).get_queryset()
+        base_qs = super(CustomuserUpdateView, self).get_queryset()
         # さらにユーザIDで絞った結果を返す。(存在しないので404が返る)
         # 条件分岐してエラーページを出しても可
         return base_qs.filter(username=self.request.user.username)
